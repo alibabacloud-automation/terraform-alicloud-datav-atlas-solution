@@ -6,19 +6,19 @@
 # ------------------------------------------------------------------------------
 
 variable "vpc_config" {
-  description = "Configuration for VPC. The attributes 'cidr_block' and 'vpc_name' are required."
+  description = "Configuration for VPC. The attribute 'cidr_block' is required, 'vpc_name' is optional."
   type = object({
     cidr_block = string
-    vpc_name   = string
+    vpc_name   = optional(string, null)
   })
 }
 
 variable "vswitch_config" {
-  description = "Configuration for VSwitch. The attributes 'cidr_block', 'zone_id', and 'vswitch_name' are required."
+  description = "Configuration for VSwitch. The attributes 'cidr_block' and 'zone_id' are required, 'vswitch_name' is optional."
   type = object({
     cidr_block   = string
     zone_id      = string
-    vswitch_name = string
+    vswitch_name = optional(string, null)
   })
 }
 
@@ -45,7 +45,7 @@ variable "database_config" {
     character_set            = optional(string, "utf8")
     database_name            = string
     privilege                = optional(string, "DBOwner")
-    instance_name            = string
+    instance_name            = optional(string, null)
     connection_prefix        = string
   })
 }

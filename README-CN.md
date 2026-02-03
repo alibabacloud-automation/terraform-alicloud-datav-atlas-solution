@@ -60,7 +60,7 @@ module "datav_atlas_solution" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | >= 1.212.0 |
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | 1.270.0 |
 
 ## Modules
 
@@ -82,9 +82,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_database_config"></a> [database\_config](#input\_database\_config) | Configuration for PostgreSQL database instance. The attributes 'account\_name', 'account\_password', 'database\_name' are required. | <pre>object({<br/>    engine                   = optional(string, "PostgreSQL")<br/>    engine_version           = optional(string, "17.0")<br/>    instance_storage         = optional(string, "50")<br/>    instance_type            = optional(string, "pg.n4.2c.1m")<br/>    instance_charge_type     = optional(string, "Postpaid")<br/>    db_instance_storage_type = optional(string, "cloud_essd")<br/>    category                 = optional(string, "Basic")<br/>    security_ips             = optional(list(string), ["47.99.0.0/16", "192.168.0.0/16"])<br/>    port                     = optional(string, "5432")<br/>    account_type             = optional(string, "Super")<br/>    account_name             = string<br/>    account_password         = string<br/>    character_set            = optional(string, "utf8")<br/>    database_name            = string<br/>    privilege                = optional(string, "DBOwner")<br/>    instance_name            = optional(string, null)<br/>    connection_prefix        = optional(string, null)<br/>  })</pre> | n/a | yes |
-| <a name="input_vpc_config"></a> [vpc\_config](#input\_vpc\_config) | Configuration for VPC. The attribute 'cidr\_block' is required. | <pre>object({<br/>    cidr_block = string<br/>    vpc_name   = optional(string, null)<br/>  })</pre> | n/a | yes |
-| <a name="input_vswitch_config"></a> [vswitch\_config](#input\_vswitch\_config) | Configuration for VSwitch. The attributes 'cidr\_block' and 'zone\_id' are required. | <pre>object({<br/>    cidr_block   = string<br/>    zone_id      = string<br/>    vswitch_name = optional(string, null)<br/>  })</pre> | n/a | yes |
+| <a name="input_account_password"></a> [account\_password](#input\_account\_password) | Password for the database account. | `string` | n/a | yes |
+| <a name="input_database_config"></a> [database\_config](#input\_database\_config) | Configuration for PostgreSQL database instance. The attributes 'account\_name', 'database\_name', 'instance\_name', 'connection\_prefix' are required. | <pre>object({<br/>    engine                   = optional(string, "PostgreSQL")<br/>    engine_version           = optional(string, "17.0")<br/>    instance_storage         = optional(string, "50")<br/>    instance_type            = optional(string, "pg.n4.2c.1m")<br/>    instance_charge_type     = optional(string, "Postpaid")<br/>    db_instance_storage_type = optional(string, "cloud_essd")<br/>    category                 = optional(string, "Basic")<br/>    security_ips             = optional(list(string), ["47.99.0.0/16", "192.168.0.0/16"])<br/>    port                     = optional(string, "5432")<br/>    account_type             = optional(string, "Super")<br/>    account_name             = string<br/>    character_set            = optional(string, "utf8")<br/>    database_name            = string<br/>    privilege                = optional(string, "DBOwner")<br/>    instance_name            = optional(string, null)<br/>    connection_prefix        = string<br/>  })</pre> | n/a | yes |
+| <a name="input_vpc_config"></a> [vpc\_config](#input\_vpc\_config) | Configuration for VPC. The attribute 'cidr\_block' is required, 'vpc\_name' is optional. | <pre>object({<br/>    cidr_block = string<br/>    vpc_name   = optional(string, null)<br/>  })</pre> | n/a | yes |
+| <a name="input_vswitch_config"></a> [vswitch\_config](#input\_vswitch\_config) | Configuration for VSwitch. The attributes 'cidr\_block' and 'zone\_id' are required, 'vswitch\_name' is optional. | <pre>object({<br/>    cidr_block   = string<br/>    zone_id      = string<br/>    vswitch_name = optional(string, null)<br/>  })</pre> | n/a | yes |
 
 ## Outputs
 
